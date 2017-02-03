@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <p>
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-repeat="book in books track by $index">
+                    <a href="#!/product/{{book.id}}">{{book.title}}</a></li>
+            </ul>
+            </p>
+
+        </div>
+        <div class="col-md-10">
+            <ul class="books">
+                <li ng-repeat="book in books track by $index" class="thumbnail book-list-item">
+                    <div>
+                        <div class="book-image"><a href="#!/product/{{book.id}}" class="thumb">
+                            <img ng-src="{{book.image}}" alt="{{book.title}}"/>
+                        </a>
+                        </div>
+                        <div>
+                            <div class="book-title"><a href="#!/product/{{book.id}}">{{book.title}}</a></div>
+                            <p>{{book.description}}</p>
+                            <div class="book-price">Price:{{book.price}}</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

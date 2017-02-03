@@ -1,0 +1,16 @@
+.book-title {
+    font-size: large;
+}
+.book-titles {
+    list-style-type: none;
+    float:left;
+}
+.book-image {
+    display: inline-block;
+}
+.btn {
+    margin-top: 20px;
+}
+.book-price {
+    font-size: large;
+}
