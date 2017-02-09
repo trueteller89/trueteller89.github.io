@@ -1,3 +1,5 @@
+/*//= ../../bower_components/angular/angular.js
+//= ../../bower_components/angular-route/angular-route.js*/
 'use strict';
 angular.module('myApp', [
     'ngRoute',

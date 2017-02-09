@@ -7,7 +7,21 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-
+var bower = require('gulp-bower');
+var bootstrapSass = {
+    in: 'bower_components/bootstrap-sass/'
+};
+var css = {
+    in: 'scss/main.scss',
+    out: 'dist/css/',
+    watch: 'dist/css/**/*',
+    sassOpts: {
+        outputStyle: 'nested',
+        precison: 3,
+        errLogToConsole: true,
+        includePaths: [bootstrapSass.in + 'assets/stylesheets']
+    }
+};
 // Lint Task
 gulp.task('lint', function() {
     return gulp.src('js/*.js')
@@ -17,14 +31,13 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('scss/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('dist/css'));
+    return gulp.src( css.in)
+        .pipe(sass(css.sassOpts))
+        .pipe(gulp.dest(css.out));
 });
-
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src('js/*.js')
+    return gulp.src(['bower_components/angular/angular.js','bower_components/angular-route/angular-route.js','js/*.js'])
         .pipe(concat('all.js'))
         .pipe(gulp.dest('dist'))
         .pipe(rename('all.min.js'))
